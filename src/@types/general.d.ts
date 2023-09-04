@@ -1,16 +1,15 @@
 type Todo = {
-    id:number;
-    userId:number;
-    completed:boolean;
-    todo:string
+    id: number;
+    userId: number;
+    completed: boolean;
+    todo: string
 }
 
 type EditMode = {
-    id:number
-    title:string
-}
+    id: number
+    title: string | any}
 
 type InitialState = {
-    todos:Todo[]
+    todos: Todo[]
     editableTodo: EditMode
 }

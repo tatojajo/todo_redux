@@ -30,7 +30,7 @@ export type EDIT_MODE_ACTION = {
 
 export type UPDATE_TODO_ACTION = {
   type: typeof UPDATE_TODO;
-  payload: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+  payload: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | string;
 };
 
 export type DONE_EDITING_ACTION = {

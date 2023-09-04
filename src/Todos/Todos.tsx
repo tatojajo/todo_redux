@@ -25,6 +25,7 @@ import { Delete, DoneAll, DoneTwoTone, Edit } from "@mui/icons-material";
 import TodosInput from "./TodosInput";
 import { TodoBtns, TodosContainer } from "./Todo.Style";
 
+
 const Todos = () => {
   const dispatch = useTodoDispatch();
   const { todos, editableTodo } = useTodoSelector((state) => state);
@@ -40,7 +41,8 @@ const Todos = () => {
   const handleTodoChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    dispatch(updateTodoValue(e.target.value));
+    const value: any = e.target.value
+    dispatch(updateTodoValue(value));
   };
 
   const handleEditDone = async (editiedTodo: EditMode) => {
@@ -64,7 +66,7 @@ const Todos = () => {
     const getTodos = async () => {
       const {
         data: { todos },
-      } = await axios.get("https://dummyjson.com/todos");
+      } = await axios.get("https://dummyjson.com/todos?limit=6");
       dispatch(saveTodosData(todos));
     };
     getTodos();
@@ -80,7 +82,7 @@ const Todos = () => {
       }}
     >
       <Box>
-        <Typography variant="h1" color="initial">
+        <Typography variant="h3" color="initial">
           My Tasks
         </Typography>
       </Box>
@@ -121,7 +123,7 @@ const Todos = () => {
             ) : (
               <ListItem key={todo.id}>
                 <ListItemText
-                  style={{ textDecoration: todo.completed && "line-through" }}
+                  style={{ textDecoration: todo.completed ? "line-through" : undefined }}
                 >
                   {todo.todo}
                 </ListItemText>
